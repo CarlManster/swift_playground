@@ -28,3 +28,37 @@ let optDbs = optNos.enumerated().map { (index, no) -> Int in
     return (index + 1) * 7
 }
 print(optDbs)
+
+// flatmap
+let flatNos = optNos.flatMap { $0 }
+print(flatNos)
+
+// filter
+let filteredNos = flatNos.filter { (num) -> Bool in
+    return (num % 3 < 2)
+}
+print(filteredNos)
+
+// reduce
+let reducedNos = filteredNos.reduce(0) { (last, item) -> Int in
+    return last + item
+}
+print(reducedNos)
+
+
+var tuples: [(String, Int)] = []
+tuples.append(("hello", 9))
+tuples.append(("world", 7))
+tuples.append(("nice", 6))
+tuples.append(("to", 3))
+tuples.append(("meet", 0))
+tuples.append(("you", 5))
+
+let reducedTuple = tuples.reduce(("", 0)) { (last, item) -> (String, Int) in
+    let appendedString = last.0.isEmpty ? item.0 : "\(last.0) \(item.0)"
+    let appendedNumber = last.1 + item.1
+    
+    return (appendedString, appendedNumber)
+}
+print(reducedTuple)
+
