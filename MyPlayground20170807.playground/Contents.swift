@@ -104,3 +104,31 @@ get4().proto2Func()
 func getItem(_ item: Base?) -> Enu {
     return item?.enu ?? .zero
 }
+
+let data: [String] = [ ]
+
+// error
+//print(data[0])
+
+extension RawRepresentable where RawValue == Int {
+    static var count: RawValue {
+        var i: RawValue = 0
+        while let _: Any = Self(rawValue: i) { i += 1 }
+        return i
+    }
+}
+
+enum TestEnum: Int {
+    case test0
+    case test1
+    case test2
+    case test3
+}
+
+TestEnum.count
+let enum0 = TestEnum(rawValue: 0)
+let enum1 = TestEnum(rawValue: 1)
+let enum2 = TestEnum(rawValue: 2)
+let enum3 = TestEnum(rawValue: 3)
+let enum4 = TestEnum(rawValue: 4)
+
