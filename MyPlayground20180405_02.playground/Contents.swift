@@ -96,5 +96,3 @@ print("people == \(people)\n")
 
 let group = people.group { $0.age }
 print("group == \(group)")
-
-
