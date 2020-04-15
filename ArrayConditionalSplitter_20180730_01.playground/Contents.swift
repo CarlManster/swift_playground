@@ -2,6 +2,28 @@
 
 import Foundation
 
+fileprivate let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return dateFormatter
+}()
+
+extension Date {
+    static func timeInterval(of age: Int) -> TimeInterval {
+        return Calendar.current.date(byAdding: DateComponents(year: -age), to: Date())?.timeIntervalSince1970 ?? 0.0
+    }
+    
+    var dateFormatString: String {
+        return dateFormatter.string(from: self)
+    }
+}
+
+extension String {
+    var formattedDate: Date? {
+        return dateFormatter.date(from: self)
+    }
+}
+
 // Group by property
 extension Sequence {
     func group<GroupingType: Hashable>(by key: (Iterator.Element) -> GroupingType) -> [[Iterator.Element]] {
@@ -46,19 +68,12 @@ struct Person: CustomStringConvertible {
     static let familyNames = ["김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "류", "전"]
     static let lastNames = ["하준", "도윤", "서준", "시우", "민준", "주원", "예준", "유준", "지호", "준우", "하윤", "서윤", "서연", "하은", "지유", "하린", "지우", "수아", "지아", "서아"]
     
-    private static let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale.current
-        
-        return formatter
-    }()
-    
-    static func makeRandomPeople(count: Int) -> [Person] {
+    static func makeRandomPeople(count: Int, maxAge: Int = 100) -> [Person] {
         var result: [Person] = []
         
         if count > 0 {
-            let limit = UInt32(Date().timeIntervalSince1970)
+            let timeAdjustment = Date.timeInterval(of: maxAge)
+            let limit = UInt32(Date().timeIntervalSince1970 - timeAdjustment)
             
             (0..<count).forEach({ (_) in
                 let birthTimeInterval: TimeInterval = {
@@ -68,7 +83,7 @@ struct Person: CustomStringConvertible {
                 }()
                 
                 let name = "\(familyNames.random())\(lastNames.random())"
-                let birthDay = Date(timeIntervalSince1970: birthTimeInterval)
+                let birthDay = Date(timeIntervalSince1970: birthTimeInterval + timeAdjustment)
                 
                 result.append(Person(name: name, birthDay: birthDay))
             })
@@ -81,11 +96,11 @@ struct Person: CustomStringConvertible {
     var birthDay: Date
     
     var age: Int {
-        return Int((Date().timeIntervalSince1970 - birthDay.timeIntervalSince1970) / (365.24 * 86400.0))
+        return Calendar.current.dateComponents([.year], from: birthDay, to: Date()).year ?? 0
     }
     
     var birth: String {
-        return Person.formatter.string(from: birthDay)
+        return birthDay.dateFormatString
     }
     
     var description: String {
@@ -93,11 +108,14 @@ struct Person: CustomStringConvertible {
     }
 }
 
-let people = Person.makeRandomPeople(count: 500)
+// randomly generate people
+let people = Person.makeRandomPeople(count: 500, maxAge: 15)
 print("people == \(people)\n")
 
+// split group based on age > 15
 let split = people.split { $0.age > 15 }
 print("split == \(split)\n")
 
-let group = (split.first?.group { $0.name } ?? []).map { ($0.first?.name ?? "No Name", $0.count) }.filter { $0.1 > 1 }
-print("group == \(group)\n")
+//
+//let group = (split.first?.group { $0.name } ?? []).map { ($0.first?.name ?? "No Name", $0.count) }.filter { $0.1 > 1 }
+//print("group == \(group)\n")

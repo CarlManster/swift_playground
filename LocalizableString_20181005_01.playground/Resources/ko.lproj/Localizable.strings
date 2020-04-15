@@ -1,0 +1,40 @@
+/*
+ NTLocalizable.strings
+ Notices
+ 
+ Created by thkwun on 13. 6. 4..
+ 
+ */
+"NTNoticeTitle" = "공지사항";
+
+"NTNoticeTypeNotice" = "공지";
+"NTNoticeTypeEvent" = "이벤트";
+"NTNoticeTypeUpdate" = "업데이트";
+
+"NTOKTitle" = "확인";
+"NTCancelTitle" = "취소";
+"NTCallTitle" = "통화";
+"NTMoveTitle" = "바로가기";
+"NTUpdateNowTitle" = "지금 업데이트";
+"NTUpdateLaterTitle" = "나중에";
+"NTCloseTitle" = "닫기";
+
+"NTDoNotShowAgainTitle" = "다시 보지 않기";
+
+"NTUpdateLatestVersionTitle" = "최신 버전 업데이트 하기";
+"NTMoreDetailTitle" = "자세히 보기";
+
+"NTNoNoticesTitle" = "등록된 공지가 없습니다.";
+
+"NTNetworkErrorTitle" = "공지사항을 확인할 수 없습니다. 네트워크 연결 상태를 확인해 주세요.";
+"NTUnknownErrorTitle" = "공지사항을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.";
+
+"NTDoNotShowNDaysFormat" = "%@일간 보지 않기";
+
+"NTCurrentLatestVersion" = "최신버전 사용 중";
+
+"NTEventPageBody" = "이벤트 내용은 '자세히 보기'버튼을 눌러 확인하세요!";
+
+"NTitleButtonOpen" = "열기";
+"NTitleButtonClose" = "닫기";
+"NTDateFormat" = "MMMM d YYYY";

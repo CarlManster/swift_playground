@@ -1,0 +1,41 @@
+/*
+ NTLocalizable.strings
+ Notices
+ 
+ Created by thkwun on 13. 6. 4..
+ 
+ */
+"NTNoticeTitle" = "通知";
+
+"NTNoticeTypeNotice" = "通知";
+"NTNoticeTypeEvent" = "event";
+"NTNoticeTypeUpdate" = "update";
+
+"NTOKTitle" = "OK";
+"NTCancelTitle" = "Cancel";
+"NTCallTitle" = "Call";
+"NTMoveTitle" = "Move Now";
+"NTUpdateNowTitle" = "Update Now";
+"NTUpdateLaterTitle" = "Update Later";
+"NTCloseTitle" = "Close";
+
+"NTDoNotShowAgainTitle" = "Do Not Show Again";
+
+"NTUpdateLatestVersionTitle" = "Update Latest Version";
+"NTMoreDetailTitle" = "More";
+
+"NTNoNoticesTitle" = "No Notices.";
+
+"NTNetworkErrorTitle" = "通知を確認できませんでした. ネットワークを確認してください.";
+"NTUnknownErrorTitle" = "Could not check notice. Please try again after a while.";
+
+"NTDoNotShowNDaysFormat" = "Do not show for %@ days";
+
+"NTCurrentLatestVersion" = "Latest version";
+
+"NTEventPageBody" = "Please check the details of the event by clicking this link below!";
+
+"NTitleButtonOpen" = "Open";
+"NTitleButtonClose" = "Close";
+"NTDateFormat" = "MMMM d YYYY";
+
